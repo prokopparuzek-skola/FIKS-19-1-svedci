@@ -12,19 +12,45 @@ func split(friends [][]int) (ans []int) {
 		d1[i] = true
 	}
 
-	for i := 1; i < len(friends); i++ {
-		f := friends[i]
-		var cnt int
-		for _, neigh := range f {
-			if d1[neigh] == true {
-				cnt++
+	for count := 0; count < 200; count++ {
+		for i := 1; i < len(friends); i++ {
+			f := friends[i]
+			var cnt1, cnt2 int
+			for _, neigh := range f {
+				if d1[neigh] == true {
+					cnt1++
+				}
+			}
+			for _, neigh := range f {
+				if d2[neigh] == true {
+					cnt2++
+				}
+			}
+			if cnt1 > len(f)/2 && cnt2 <= len(f)/2 {
+				d2[i] = true
+				d1[i] = false
 			}
 		}
-		if cnt > len(f)/2 {
-			d2[i] = true
-			d1[i] = false
+		for i := 1; i < len(friends); i++ {
+			f := friends[i]
+			var cnt1, cnt2 int
+			for _, neigh := range f {
+				if d1[neigh] == true {
+					cnt1++
+				}
+			}
+			for _, neigh := range f {
+				if d2[neigh] == true {
+					cnt2++
+				}
+			}
+			if cnt2 > len(f)/2 && cnt1 <= len(f)/2 {
+				d1[i] = true
+				d2[i] = false
+			}
 		}
 	}
+
 	for i := 0; i < len(ans); i++ {
 		t := i + 1
 		if d1[t] == true {
