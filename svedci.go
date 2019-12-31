@@ -10,8 +10,8 @@ func main() {
 		var N, M int
 		var friends [][]int
 		fmt.Scanf("%d%d", &N, &M)
-		friends = make([][]int, N)
-		for j := 0; j < N; j++ {
+		friends = make([][]int, N+1)
+		for j := 1; j <= N; j++ {
 			friends[j] = make([]int, 0)
 		}
 		for j := 0; j < N; j++ {
