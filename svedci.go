@@ -55,9 +55,13 @@ func main() {
 			friends[to] = append(friends[to], from)
 		}
 		ans := split(friends)
-		for j := 0; j < len(ans)-1; j++ {
-			fmt.Printf("%d ", ans[j])
+		if len(ans) == 1 {
+			fmt.Printf("%d\n", ans[0])
+		} else {
+			for j := 0; j < len(ans)-1; j++ {
+				fmt.Printf("%d ", ans[j])
+			}
+			fmt.Printf("%d\n", ans[len(ans)-1])
 		}
-		fmt.Printf("%d\n", ans[len(ans)-1])
 	}
 }
